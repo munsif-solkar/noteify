@@ -1,0 +1,159 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="../static/notes2.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/read-page/haman.css">
+    <link rel="stylesheet" href="../static/css/read-page/public-read/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/global/modal.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    <title>{{title}} - Noteify</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/" style="font-family: 'Akaya Telivigala', cursive;letter-spacing: 1px;"><img src='../static/notes2.png' height="40" style="margin: 0px 10px">NOTEIFY</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- <span class="navbar-toggler-icon"></span> -->
+            <img src="../static/menu.png" height='30'>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              
+            </ul>
+            <div class="user_details" style="padding:7px 10px;border-radius: 0px;">
+                <ul class="navbar-nav">
+             <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+              {% if not isLogged %}
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/register">Register</a>
+              </li>
+              {% endif %}
+              <li class="nav-item">
+                <a class="nav-link" href="/contact">Contact</a>
+              </li>
+            </ul>
+            
+            </div>
+
+          </div>
+
+        </div>
+
+       </nav>
+
+<div class="sec_">
+    <!-- <p><img src="../static/light-mode.png" height="35" onclick="toogleDarkMode()" id="darkMode" style="margin:0px 20px;cursor: pointer;line-height:60px">
+    </p> -->
+
+    <p>
+        <a onclick="hamMenu()"><img src="../static/setting-lines.png" height="25" style="margin:0px 10px 0px 0px;cursor: pointer;" class="sec_logo" title="Settings"></a>
+        <img src="../static/light-mode.png" height="35" onclick="toogleDarkMode()" id="darkMode" style="margin:15px 0px;cursor: pointer" class="sec_logo">
+        <a onclick="savePDF()" style="margin-left:10px;cursor:pointer;"><img src="../static/file.png" height="25" class="sec_logo" title='Download as PDF'></a>
+    </p>
+
+</div>
+
+
+
+<div class="menu-frame">
+    <div class="fil-menu">
+        <div id='fontchanger' style="width:100%">
+            <p style="margin: 0px;color:gray;margin:3px" id="Fontsize">Font: 16px</p>
+            <input class="none" type="range" min="10" max="50" value="16" id="font-range" step="1"
+                onchange="fontSize(value)" style="width:100%;border: none;outline: none;">
+        </div>
+        <p style="margin: 0px;color:gray;margin:3px">Text align</p>
+
+        <div id="text-align"
+            style="display:flex;background: none;padding: 0px;align-items: center;justify-content: center;margin:0px 0px">
+            <img src='../static/left-align.png' height="25" onclick="setAlign('left')" id="leftAlignImage" style="border: 1px solid #4caf50;">
+            <img src='../static/center-align.png' height="25" onclick="setAlign('center')" id="centerAlignImage">
+            <img src='../static/right-align.png' height="25" onclick="setAlign('right')" id="rightAlignImage">
+        </div>
+        <button onclick="applyFilters()">APPLY</button>
+    </div>
+</div>
+
+
+<div class="card">
+    <div class="source_details">
+        <span style="margin:0px;opacity: 0.8" id="source_label" class="hybrid_text">Source</span>
+        <span style='color:#444444' class="hybrid_text">{{user}}</span>
+    </div>
+  <div class="card-body">
+    <h2 class="card-title" style="font-family: sans-serif;font-weight: bold;color:#2b8ba6">{{title}}</h2>
+    <span class="card-subtitle mb-2 text-muted" style="font-weight: bold;color:gray">{{date}}</span>
+    <span class="card-subtitle mb-2 text-muted" id='wordsCount' style="margin-left: 20px;color:gray"></span>
+    <span class="card-subtitle mb-2 text-muted" id='Fontsize' style="margin-left: 10px;color:gray">Font: 16px</span>
+    <div class="spy">
+        <h6 class="card-title" id="arrow">&rarr;</h6>
+        <pre style="white-space: pre-wrap;
+            font-family: sans-serif;
+            letter-spacing: 0.5px;
+            font-size: 16px;
+            color: #151719;"><p class="card-text" style="font-family:sans-serif;letter-spacing: 0.5px;line-height: 23px">{{note}}</p></pre>
+    </div>
+  </div>
+  <div class="save_note">
+    <span id="save_button_label" class="hybrid_text">Save this note to your profile</span>
+    <a style="color: #fff;" class="save_note" id="addNew">Save</a>
+    </div>
+</div>
+
+
+
+ <!-- modal form -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <form id="form" method="post" action="/panel/add">
+          <h3 align="center"
+            style="color:rgb(82, 82, 82);font-weight:500;font-family: 'Righteous', sans-serif;letter-spacing: 1px;">Save this note</h3>
+          <div class="mb-3">
+            <!-- <label for="exampleInputPassword1" class="form-label">Title</label> -->
+            <input type="text" id="exampleInputPassword1" name='note_title' autocomplete="off" placeholder="Title"
+              maxlength="100" required autocapitalize='on'
+              style="border:none;font-weight: bold;width:100%;outline: none;padding:5px 8px;font-size: 22px;color: rgb(82, 82, 82);letter-spacing:1px;margin-top: 5px;" value='{{title}}'>
+          </div>
+
+
+          <label for="txtarea" class="form-label" style="padding:0px 8px">{{date_today}}</label>
+          <label for="txtarea" class="form-label" style="padding:0px 8px;color:gray" id="wordsCount_"></label>
+          <div class="input-group">
+            <textarea aria-label="With textarea" id="txtarea" name="note_muscle" placeholder="......." maxlength="5000"
+              rows="10" required onkeyup="countWords()">{{note}}</textarea>
+          </div><br />
+          <button type="submit" class="btn btn-dark" style="background:#4caf50;color:#fff;border:none">Save</button>
+        </form>
+      </div>
+    </div>
+    <!-- ends -->
+
+
+<!-- footer -->
+<footer style="padding: 10px;margin-top: auto;z-index:-1;opacity:0.9;text-align: center;z-index: -1">
+  <img src="../static/notes2.png" height="30">
+  <a href="/" style="text-decoration: none;color:#2b8ba6">noteify.com</a>
+  <span id="copyright" style="color: #1b1b1b;">&copy 2021 | All rights reserved</span>
+</footer>
+<!-- ends -->
+
+<script src="../static/js/read-page-script/haman.js"></script>
+<script src="../static/js/read-page-script/public-read/publicPage.js"></script>
+
+</body>
+
+</html>

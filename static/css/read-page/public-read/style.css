@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap');
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 0.5px;
+}
+body{
+  background:#F4F4F4;
+  /*background: linear-gradient(to top,#fcf9f9fb,#027a269a);*/
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+  .sec_{
+      width: 100%;
+      max-width:100%;
+      margin:0px auto 0px auto;
+      background: #fffffff8;
+      height: 63px;
+      /*border-bottom: 1px solid #EBEBEB;*/
+      overflow: hidden;
+      padding: 0px 170px;
+      box-shadow: 0px 0px 5px #ccc;
+  }
+  .sec_ p{
+      line-height: 60px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #444444;
+      background: none;
+      display: inline-block;
+      padding:0px 20px;
+  }
+  .card{
+      width: 100%;
+      max-width: 75%;
+      margin:7px auto;
+      background: rgb(255, 255, 255);
+      background: #FFFFFF;
+      border: none;
+      border-bottom: 0px solid #ccc;
+  }
+  .source_details{
+    background: none;
+    margin: 0px 0px 4px 0px;
+    padding:10px 20px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(162, 162, 162, 0.37);
+  }
+  .source_details #source_label{
+    font-size: 14px;
+    font-weight: unset;
+    margin: 0px;
+    color: #444444;
+  }
+  .source_details span{
+    font-size: 20px;
+    line-height: 18px;
+    padding: 0px;
+    margin: 0px;
+    font-weight: bold;
+    color: rgba(96, 96, 96, 1);
+    color: #4caf50;
+  }
+  .card-title{
+      color: #2b8ba6;
+      font-size: 22px;
+  }
+  pre{
+      white-space: pre-wrap;
+      font-family: sans-serif;
+      letter-spacing: 0.5px;
+      font-size: 16px;
+      color: #151719;
+  }
+  .save_note{
+      background: none;
+      padding: 10px 20px;
+      border-top: 1px solid rgba(162, 162, 162, 0.37);
+      overflow: hidden;
+      position: relative;
+  }
+  .save_note span{
+    font-size: 14px;
+    line-height: 30px;
+  }
+  .save_note a{
+    float: right;
+    text-decoration: none;
+    color:#ffffff;
+    background:#4caf50;
+    font-size: 14px;
+    font-weight: 500;
+    padding:3px 10px 3px 10px;
+    border-radius:3px;
+    letter-spacing:0.5px;
+    cursor: pointer;
+    color: #444444;
+  }
+/*Menu*/
+.menu-frame{
+width: 100%;
+max-width: 100%;
+background: none;
+position: absolute;
+width: 100%;
+top: 21%;
+z-index: 1;
+padding: 0px 180px;
+display: none;
+}
+.fil-menu{
+width: 250px;
+background: #ffffff;
+padding: 8px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.fil-menu button{
+padding: 6px;
+background: #4caf50;
+width: 100%;
+border: none;
+color: #f8f8f8;
+font-weight: bold;
+border-radius: 3px;
+margin: 10px 0px;
+}
+
+/*ends*/
+  @media screen and (max-width: 700px){
+      .sec_{
+          max-width: 100%;
+          padding: 0px;
+      }
+      .card{
+          max-width:100%;
+          border-radius: 0px;
+          margin: 0px auto;
+      }
+      .menu-frame{
+          padding: 0px;
+      }
+  }

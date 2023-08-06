@@ -1,0 +1,47 @@
+/*Menu*/
+.menu-frame{
+    width: 100%;
+    max-width: 100%;
+    background: none;
+    position: absolute;
+    width: 100%;
+    top: 20%;
+    z-index: 1;
+    padding: 0px 180px;
+    display: none;
+    }
+    .fil-menu{
+    width: 250px;
+    background: #ffffff;
+    padding: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    }
+    .fil-menu button{
+    padding: 6px;
+    background: #4caf50;
+    width: 100%;
+    border: none;
+    color: #f8f8f8;
+    font-weight: bold;
+    border-radius: 3px;
+    margin:10px 0px 0px 0px;
+    }
+    #text-align img{
+    margin:  5px 3px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 10px;
+    height: 45;
+    cursor: pointer;
+    }
+    /* #text-align img:hover{
+    background: #e6f2ff;
+    border:1px solid #4caf50;
+    } */
+    /*ends*/
+
+    @media screen and (max-width: 700px){
+        .menu-frame{
+            padding: 0px;
+        }
+    }

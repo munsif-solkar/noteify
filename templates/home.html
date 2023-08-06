@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Home - Noteify</title>
+  <link rel="icon" href="../static/notes2.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Noteify is a secure cloud based Notepad where you can store your notes edit them and share your notes with your friends.
+    Read and edit your notes anytime anywhere.">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@600&display=swap');
+    body{
+      background: #F4F4F4;
+      /*background:linear-gradient(to top,#fcf9f9fb,#027a269a);*/
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .welcome_banner{
+      height: auto;
+      background: url('../static/images/home-background2.jpg');
+      background-size: cover;
+      background: #f8f8f8;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding:30px 15px;
+      flex-wrap: wrap;
+    }
+    .welcome_banner p{
+      margin: 0;
+      margin:5px;
+      color: #444444;
+      font-family: 'Akaya Telivigala', cursive;
+    }
+
+    #buttons{
+      padding:0px 5px;
+    }
+    #buttons .entry-button{
+      border:none;
+      background: #4caf50;
+      padding:4px 9px;
+      color:#fff;
+      border-radius: 3px;
+      margin: 8px 2px;
+    }
+    #buttons .register{
+      background:#2b8ba6;
+
+    }
+    #ref_img{
+      border: 1px solid #ccc;
+      margin:0px 0px 0px 40px;
+    }
+    #ref_img img{
+      width: 100%;
+      height: 300px;
+    }
+    .features{
+      padding:0px 15px;
+      background: #f8f8f8;
+    }
+    .features .features-justify{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .features #title{
+      font-size: 30px;font-weight: bolder;line-height: 40px;font-family: 'Source Code Pro', monospace;margin-left: 120px;color: #444444;
+    }
+    #featureCard{
+      opacity: 0.7;
+      text-align: center;
+      margin: 20px 15px;
+      max-width: 250px;
+    }
+    #featureCard p{
+      padding: 7px 0px;
+      margin: 0;
+    }
+    @media screen and (max-width: 700px){
+      .welcome_banner{
+        height: auto;
+      }
+      #ref_img img{
+        height: 160px;
+      }
+      #ref_img{
+        margin: 10px 0px 10px 0px;
+      }
+      .features #title{
+        margin-left: 0px;
+      }
+    }
+  </style>
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/" style="font-family: 'Akaya Telivigala', cursive;letter-spacing: 1px;"><img src='../static/notes2.png' height="40" style="margin: 0px 10px">NOTEIFY</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- <span class="navbar-toggler-icon"></span> -->
+            <img src="../static/menu.png" height='30'>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              
+            </ul>
+            <div class="user_details" style="padding:7px 10px;border-radius: 0px;">
+                    <!-- <i class="fa fa-user" style="font-size:36px;color:white"></i> -->
+                    <!-- <span style="color: #fbfbfb;margin:0px 10px">{{username}}</span> -->
+                <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#features">Features</a>
+              </li>
+            </ul>
+            
+            </div>
+
+          </div>
+
+        </div>
+
+       </nav>
+
+<div class="welcome_banner">
+  <div class="inner-content" style="text-align: ceter;margin-right: 20px;">
+    <p style="font-size: 30px;font-weight: bolder;line-height: 40px;font-family: 'Source Code Pro', monospace;">Welcome to Noteify</p>
+    <p>Noteify is a secure cloud based Notepad where you can store<br/> your notes edit them and share your notes with your friends.</p>
+    <p>Read and edit your notes anytime anywhere.</p>
+    <div id='buttons'>
+      <a href="/login"><button type="button" class="entry-button login">Login</button></a>
+      <a href="/register"><button type="button" class="entry-button register">Register</button></a>
+    </div>
+  </div>
+
+<div id="ref_img">
+    <img src="../static/gif/final-ref.gif" alt='ref' height="300">
+  </div>
+
+</div>
+
+<div class="features" id="features">
+  <p id="title">Features</p>
+  <div class="features-justify">
+    <div id="featureCard">
+      <img src="../static/images/notepad-with-spring.png" height="100">
+      <p style="font-weight: bold;">Simple and smooth interface</p>
+      <span>Noteify provides simple and smooth user experience this makes our app faster to work on</span>
+    </div>
+    <div id="featureCard">
+      <img src="../static/images/padlock.png" height="100">
+      <p style="font-weight: bold;">Highly secured</p>
+      <span>Your data is completely safe with us we never secretly store any data deleted by user</span>
+    </div>
+    <div id="featureCard">
+      <img src="../static/images/trash.png" height="100">
+      <p style="font-weight: bold;">Trash</p>
+      <span>To ensure your step we've provided trash to easily recover deleted note or delete it permanently</span>
+    </div>
+    <div id="featureCard">
+      <img src="../static/images/share.png" height="100">
+      <p style="font-weight: bold;">Share note</p>
+      <span>Of course you can share your note with your friends by simply creating public url</span>
+    </div>
+  </div>
+</div>
+
+<!-- footer -->
+<footer style="padding: 10px;margin-top: auto;z-index:-1;opacity:0.7;text-align: center;z-index: -1">
+  <img src="../static/notes2.png" height="30">
+  <a href="/" style="text-decoration: none;color:#2b8ba6">noteify.com</a>
+  <span id="copyright">&copy 2021 | All rights reserved</span>
+</footer>
+<!-- ends -->
+
+
+</body>
+</html>

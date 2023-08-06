@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap');
+body{
+background:#f4f4f4;
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+overflow: hidden;
+}
+.nav-profile-button{
+    position: absolute;
+    right: 30;
+}
+.drop-profile-tab{
+    position: absolute;
+    right: 10;
+    background: #fff;
+    top: 60;
+    max-width: 300px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0px 4px 5px #ccc;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1;
+    display: none;
+}
+.drop-profile-tab div {
+    padding: 5px 0px;
+    margin: 8px 0px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: 300ms;
+
+}
+.profileSettings{
+    border: 1px solid #4caf50;
+    background: #4caf50;
+    color: #fff;
+}
+.logoutUser{
+    border: 1px solid transparent;
+    color: #4caf50;
+}
+.logoutUser:hover{
+    background: #f5f5f5;
+}
+.sec_{
+    width: 100%;
+    max-width:100%;
+    margin:0px auto 5px auto;
+    background: #F6F6F6;
+    height: 63px;
+    border-bottom: 1px solid #EBEBEB;
+    overflow: hidden;
+    padding: 0px 170px;
+    box-shadow: 0px 0px 5px #ccc;
+}
+.sec_ p{
+    line-height: 60px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #444444;
+    background: none;
+    display: inline-block;
+    padding:0px 20px;
+    position: relative;
+}
+.cards-wrek,.notebooks{
+    background: none;
+    margin:0px auto;
+    max-width: 70%;
+    width: 80%;
+    box-sizing: border-box;
+    
+}
+
+/* switch */
+.switch{
+    display: flex;
+    max-width: 70%;
+    margin:10px auto 0px auto;
+}
+.notes_sec,.notebooks_sec{
+    cursor: pointer;
+    border: 1px solid #dadada;
+}
+.switch .notes_sec{
+    /* margin: 0px 10px 0px 0px; */
+    background: #2b8ba6;
+    color:#f8f8f8;
+    padding:5px 10px;
+    border-radius: 3px 0px 0px 3px;
+    border-right: none;
+}
+.switch .notebooks_sec{
+    /* margin: 0px 10px 0px 0px; */
+    background: #f7f7f7;
+    color:#494949;
+    padding:5px 10px;
+    border-radius:0px 3px 3px 0px;
+    border-left: none;
+}
+/* ends */
+
+/* search page */
+.search_page{
+    position: fixed;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.527);
+    height: 100%;
+    width: 100%;
+    display: none;
+}
+.search_bar{
+    max-width: 600px;
+    margin:1px auto 0px auto;
+    display: flex;
+}
+.search_bar p{
+    margin: 0px;
+    color:#f8f8f8;
+    font-size: 30px;
+    background: rgb(231, 45, 45);
+    padding:3px 15px;
+    cursor: pointer;
+    border:1px solid #f8f8f8;
+}
+.search_bar input{
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 18px;
+    outline: none;
+    border: none;
+    letter-spacing: 0.5px;
+}
+.searched_elements{
+    max-width: 600px;
+    margin: auto;
+    background: none;
+    margin: auto;
+}
+.searched_elements .suggest{
+ padding:8px 15px;
+ background: #ffffff;
+ font-size: 18px;
+ letter-spacing: 0.5px;
+ color: #2b8ba6;
+ border-bottom: 1px solid #dadada;
+ font-weight: bold;
+ text-decoration: none;
+}
+.searched_elements a{
+    text-decoration: none;
+}
+.suggest #title_{
+    color: #2b8ba6;
+}
+.suggest #date_{
+    color:#868686;
+    font-weight:500;
+    font-size:15px;
+}
+.suggest #prio_{
+    color:#4caf50;
+    background:none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius:3px;
+    letter-spacing:0.5px;
+    display: inline-block;
+    margin:3px 0px 0px 0px;
+}
+/* ends */
+
+
+/*menu*/
+#addNew_toggleButton{
+    transition: 300ms;
+}
+
+.menu-frame{
+    width: 100%;
+    max-width: 100%;
+    background: none;
+    position: absolute;
+    width: 100%;
+    top: 20%;
+    z-index: 1;
+    padding: 0px 180px;
+    display: none;
+   
+}
+.fil-menu{
+    width: 200px;
+    background: #ffffff;
+    padding: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    float:right;
+}
+.fil-menu button{
+    padding: 5px;
+    background: #fafafa;
+    width: 100%;
+    border: none;
+    color: #202020;
+    border-radius: 3px;
+    margin:10px 0px 0px 0px;
+    font-size: 15px;
+    border: 1px solid #4caf50;
+    transition: 300ms;
+}
+.fil-menu button:hover{
+   box-shadow: 0px 0px 5px rgb(206, 206, 206);
+}
+/* ends */
+
+
+
+
+
+
+
+/*Modal*/
+@import url('https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.60);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 10px;
+  border: 1px solid #888;
+  max-width: 550px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+#form{
+    width: 100%;
+    max-width: 700px;
+    background:#FFFFFF;
+    border:0px solid #ccc;
+    border-radius:3px;
+    display: block;
+}
+#form textarea{
+    width: 100%;
+    padding: 7px 10px;
+    outline: none;
+    border: 0px solid #ccc;
+    border-radius: 3px;
+    background: #fbfbfb;
+}
+/*ends*/
+.recent-link-box{
+  padding: 10px 13px;
+  background: #FFFFFF;
+  border-radius: 0px;
+  border-bottom: 1px solid #e8e8e8;
+  word-wrap: break-word;
+  margin: 0px 0px;
+}
+
+
+
+
+
+
+
+
+
+
+/* responsive */
+@media screen and (max-width: 700px){
+    .sec_{
+        max-width: 100%;
+        padding: 0px;
+        margin:0px auto 0px auto;
+
+    }
+    .cards-wrek{
+        max-width: 100%;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        display: block;
+        }            
+        /* .cards-wrek{
+            display: none;
+        } */
+    .menu-frame{
+        padding: 0px;
+    }
+}
+@media screen and (max-width: 1200px){
+    .nav-profile-button{
+        position: absolute;
+        right: 80;
+        top: 15;
+    }
+}

@@ -1,0 +1,158 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="../static/notes2.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Trash - Noteify</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap');
+      body{
+        background:#F4F4F4;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+        .sec_{
+            width: 100%;
+            max-width:100%;
+            margin:0px auto 5px auto;
+            background: #F6F6F6;
+            height: 63px;
+            border-bottom: 1px solid #EBEBEB;
+            overflow: hidden;
+            padding: 0px 170px;
+            box-shadow: 0px 0px 5px #ccc;
+        }
+        .sec_ p{
+            line-height: 60px;
+            font-size: 20px;
+            font-weight: 500;
+            color: #444444;
+            background: none;
+            display: inline-block;
+            padding:0px 20px;
+            opacity: 0.6;
+            font-size: 30px;
+            text-transform: uppercase;
+        }
+        .card{
+            width: 100%;
+            max-width: 75%;
+            margin:5px auto;
+            background: rgb(255, 255, 255);
+            background: #FFFFFF;
+            border: none;
+            border-bottom: 0px solid #ccc;
+            cursor: pointer;
+        }
+        .card-title{
+            color: #2b8ba6;
+        }
+        pre{
+            white-space: pre-wrap;
+            font-family: sans-serif;
+            letter-spacing: 0.5px;
+            font-size: 16px;
+            color: #444444;
+        }
+        @media screen and (max-width: 700px){
+            .sec_{
+                max-width: 100%;
+                padding: 0px;
+                margin:0px auto 0px auto;
+
+            }
+            .card{
+                max-width:100%;
+                border-radius: 0px;
+                margin: 2px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- background message -->
+{% if data_filter|length < 1 %}
+<div class="setBack" style="position: fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index: -1;opacity: 0.2;text-align: center;">
+    <img src="../static/delete.png" height="100">
+    <p style="margin-top:5px;font-weight: bold;font-size:20px">Nothing in trash</p>
+</div>
+{% endif %}
+<!-- ends -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/" style="font-family: 'Akaya Telivigala', cursive;letter-spacing: 1px;"><img src='../static/notes2.png' height="40" style="margin: 0px 10px">NOTEIFY</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- <span class="navbar-toggler-icon"></span> -->
+            <img src="../static/menu.png" height='30'>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              
+            </ul>
+            <div class="user_details" style="padding:7px 10px;border-radius: 0px;">
+                    <!-- <i class="fa fa-user" style="font-size:36px;color:white"></i> -->
+                    <!-- <span style="color: #fbfbfb;margin:0px 10px">{{username}}</span> -->
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" style="color:#fa0000" href="/panel/logout"><img src="../static/logout.png" height="25"></a>
+              </li>
+            </ul>
+            
+            </div>
+
+          </div>
+
+        </div>
+
+       </nav>
+
+<div class="sec_">
+    <p>
+        <a href="/panel"><img src="../static/back-arrow.png" height="25" style="margin:0px 20px 0px 0px;cursor: pointer;"></a>
+        <span style="color: #444444">Trash</span>
+        <span style="font-size: 15px;margin-left:12px;color:#f7f7f7;text-transform:capitalize;background:#444444;padding:3px 8px;border-radius:30px">{{data_filter|length}}</span>
+    </p>
+
+</div>
+
+{% if data_filter|length >= 1 %}
+{% for filtered_tea in data_filter %}
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{filtered_tea['title']}}</h5><!--<img src="../static/eye.png" height='20' style="float:right;opacity: 0.7;display: none" id=0090{{loop.index}} class="readEye">-->
+    <h6 class="card-subtitle mb-2 text-muted">{{filtered_tea['date']}}</h6>
+            <div class="action" style="display: flex">
+                <a href="/panel/permanent={{filtered_tea['key']}}" style="text-decoration: none;color:#bd0006;margin-left:3px">Delete permanently</a>
+                <a href="/panel/restore={{filtered_tea['key']}}" style="text-decoration: none;color:#4caf50;margin-left:20px">Restore</a>
+            </div>
+  </div>
+</div>
+{% endfor %}
+{% endif %}
+
+<!-- footer -->
+<footer style="padding: 10px;margin-top: auto;z-index:-1;opacity:0.7;text-align: center;z-index: -1;background: #f4f4f4;">
+  <img src="../static/notes2.png" height="30">
+  <a href="/" style="text-decoration: none;color:#2b8ba6">noteify.com</a>
+  <span>&copy 2021 | All rights reserved</span>
+</footer>
+<!-- ends -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap');
+body{
+    background:#F4F4F4;
+    /*background: linear-gradient(to top,#fcf9f9fb,#027a269a);*/
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+    .sec_{
+        width: 100%;
+        max-width:100%;
+        margin:0px auto 0px auto;
+        background: #fffffff8;
+        height: 63px;
+        border-bottom: 0px solid #EBEBEB;
+        overflow: hidden;
+        padding: 0px 170px;
+        box-shadow: 0px 0px 5px #ccc;
+    }
+    .sec_ p{
+        line-height: 60px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #444444;
+        background: none;
+        display: inline-block;
+        padding:0px 20px;
+    }
+    .card{
+        width: 100%;
+        max-width: 75%;
+        margin:7px auto;
+        background: rgb(255, 255, 255);
+        background: #FFFFFF;
+        border: none;
+        border-bottom: 0px solid #ccc;
+    }
+    .card-title{
+        color: #2b8ba6;
+        font-size: 22px;
+    }
+    pre{
+        white-space: pre-wrap;
+        font-family: sans-serif;
+        letter-spacing: 0.5px;
+        font-size: 16px;
+        color: #151719;
+    }
+    #publicUrl{
+        text-align: left;
+        width: 100%;
+        max-width: 75%;
+        margin:10px auto 0px;
+        border-radius: 3px;
+        display: flex;
+        overflow: hidden;
+    }
+    #publicUrl input{
+        outline: none;
+        padding: 4px 10px;
+        width: 100%;
+        border: 0px solid #97ccdb;
+        background: #e0e0e0ee;
+        background: #ffffff;
+        color:rgb(34, 34, 34)
+    }
+    #publicUrl button{
+        border: none;
+        background: #2b8ba6;
+        color: #fff;
+        padding: 3px 15px;
+    }
+    .confMaster{
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.70);
+        z-index: 1;
+        display: none;
+        padding: 0px 0px 0px 0px;
+        background: linear-gradient(to bottom,rgba(0, 0, 0, 0.70),rgba(0, 0, 0, 0.60));
+    }
+    .confirmationBox{
+        max-width: 300px;
+        width: 100%;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background: #f4f4f4;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        color: #444444;
+        font-size: 18px;
+        text-align: center;
+        padding: 5px;
+       /* box-shadow: 10px 10px 100px #444444;*/
+        display: block;
+        border-radius: 3px;
+        margin:0 auto;
+    }
+    .confirmationBox p{
+        margin: 0px;
+    }
+    .confirmationBox p span{
+        font-size: 15px;
+        color: #151719;
+        letter-spacing: 0.5px;
+    }
+    #rfjiew{
+        font-size: 14px;
+        color:#666969;
+        margin-top: 5px;
+    }
+    .confirmationBox p span p{
+        color: #2b8ba6;
+    }
+    #confirmTitle{
+        padding: 0px 10px;
+    }
+    .confirmationBox button{
+        width:25%;
+        border: none;
+        color: #f8f8f8;
+        padding: 5px 0px;
+        margin: 5px;
+        border-radius: 3px;
+        font-size: 15px;
+    }
+    #fuckingDoIt{
+        background: none;
+        transition: 100ms;
+        border:1px solid rgba(255, 19, 22, 0.30);
+    }
+    #fuckingDoIt:hover{
+        border:1px solid rgba(255, 19, 22, 0.60);
+    }
+    /*Modal*/
+@import url('https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+/*ends*/
+    @media screen and (max-width: 700px){
+        .sec_ p{
+            padding: 0px 10px;
+        }
+        #publicUrl{
+            max-width: 96%;
+            margin:10px auto;
+        }
+        #publicUrl span{
+            font-size: 12px;
+        }
+        .sec_{
+            max-width: 100%;
+            padding: 0px;
+        }
+        .card{
+            max-width:100%;
+            border-radius: 0px;
+            margin: 0px auto;
+        }
+        .menu-frame{
+            padding: 0px;
+        }
+    }

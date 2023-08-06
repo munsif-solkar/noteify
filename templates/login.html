@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../static/notes2.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Login - Noteify</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap');
+
+      body{
+        background: #F4F4F4;
+        /*background: linear-gradient(to top,#fcf9f9fb,#027a269a);*/
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+     #form{
+            width: 100%;
+            max-width: 400px;
+            margin:30px auto 0px;
+            background:#FFFFFF;
+            padding:10px 20px;
+            border:0px solid #ccc;
+            border-radius:3px;
+        }
+        #form input{
+          outline: none;
+          display: flex;
+          width: 100%;
+          padding: 7px 10px;
+          border-radius: 3px;
+          border: 1px solid #ccc;
+          transition: 100ms;
+          -webkit-appearance: none;
+        }
+        #form input:focus{
+          border: 1px solid #2b8ba6;
+        }
+        #passwordEye{
+          float: right;
+          margin: -34px 15px 0px 0px;
+          opacity: 0.7;
+        }
+        #resPassword{
+          background: none;
+          text-align: right;
+          padding: 5px 0px;
+          width: 100%;
+          float: left;
+        }
+        #resPassword span{
+          color: #2b8ba6;
+          font-size: 14px;
+          cursor: pointer;
+          margin: 0px 10px;
+        }
+
+        .confMaster{
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.70);
+            z-index: 1;
+            display: none;
+            padding: 0px 0px 0px 0px;
+            background: linear-gradient(to bottom,rgba(0, 0, 0, 0.70),rgba(0, 0, 0, 0.60));
+        }
+        .confirmationBox{
+            max-width: 300px;
+            width: 100%;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background: #f4f4f4;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            color: #444444;
+            font-size: 18px;
+            text-align: center;
+           /* box-shadow: 10px 10px 100px #444444;*/
+            display: block;
+            border-radius: 3px;
+            margin:0 auto;
+        }
+        .confirmationBox p{
+            margin: 0px;
+            font-size: 15px;
+        }
+        #confirmTitle{
+            padding: 0px 10px;
+        }
+        .confirmationBox button{
+            width:25%;
+            border: none;
+            color: #f8f8f8;
+            padding: 5px 0px;
+            margin: 0px 10px;
+            border-radius: 3px;
+            font-size: 15px;
+        }
+      @media screen and (max-width: 700px){
+        #form{
+          max-width: 95%;
+        }
+        .register{
+          max-width: 95%;
+        }
+      }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/" style="font-family: 'Akaya Telivigala', cursive;letter-spacing: 1px;"><img src='../static/notes2.png' height="40" style="margin: 0px 10px">NOTEIFY</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- <span class="navbar-toggler-icon"></span> -->
+            <img src="../static/menu.png" height='30'>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      {% if alert == 1 %}
+      <div class="alert alert-danger" role="alert" id="alert">
+        Something went wrong !
+      </div>
+      {% endif %}
+      <form id="form" method="post">
+          <h2 align="center" style='color:rgb(82, 82, 82);font-weight:bold'>WELCOME</h2>
+          <h6 align="center" style="color:#2b8ba6;font-size:15px">Login to your account</h6>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Email</label>
+            <input type="email" id="exampleInputPassword1" name='username' onkeyup="document.getElementById('alert').style.display = 'none';" autocomplete="off" required placeholder="Email address">
+          </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword" class="form-label">Password</label>
+          <input type="password" id="exampleInputPassword" name='password' required placeholder="password">
+          <img src="../static/hide-password.png" onclick="showPassword()" height="25" id="passwordEye">
+
+          <div id="resPassword">
+          <span onclick="confirmAction()">Forgot password?</span>
+          </div>
+
+        </div>
+
+        <button type="submit" class="btn btn-dark" style="background:#4caf50;color:#fff;border:none">Login</button>
+         <a href="/register" style="margin-left:10px;text-decoration: none;color:#4caf50">Register</a>
+
+      </form>
+
+
+
+<div class="confMaster">
+<div class="confirmationBox">
+    <p style="text-align: right;font-size: 22px;font-weight: bold;margin-right: 10px;cursor: pointer;" class="thanks">&times</p>
+    <div style="border-top: 1px solid #e8e8e8;border-bottom: 1px solid #e8e8e8;padding:8px 0px">
+    <p style="margin:0px 0px 5px 0px;text-align: left;" id="confirmTitle">RELAX..Take a deep breathe and try to remember your password.</p>
+  </div>
+    <div class="confButtons" style="background: none;width:100%;display:flex;margin:10px 0px;justify-content: right;">
+        <button type="button" style="background: #4caf50" class="thanks">Thanks!</button> 
+    </div>
+</div>
+</div>
+
+<!-- footer -->
+<footer style="padding: 10px;margin-top: auto;z-index:-1;opacity:0.9;text-align: center;z-index: -1">
+  <img src="../static/notes2.png" height="30">
+  <a href="/" style="text-decoration: none;color:#2b8ba6">noteify.com</a>
+  <span id="copyright" style="color: #1b1b1b;">&copy 2021 | All rights reserved</span>
+</footer>
+<!-- ends -->
+
+<script type="text/javascript">
+function showPassword(){
+  var changeImg = document.getElementById('passwordEye');
+  var passwordField = document.getElementById('exampleInputPassword');
+  if (passwordField.type === "password") {
+    passwordField.type = "text";
+    changeImg.src = '../static/show-password.png';
+  } else {
+    passwordField.type = "password";
+    changeImg.src = '../static/hide-password.png'; 
+  }
+}
+
+//passres
+
+function confirmAction(){
+    //$('.confMaster').css('display','block');
+    $('.confMaster').fadeIn('fast',function(){
+        $('.thanks').click(function(){
+            //$('.confMaster').css('display','none');
+            $('.confMaster').fadeOut('fast');
+        });
+
+    });
+}
+
+</script>
+
+</body>
+</html>
